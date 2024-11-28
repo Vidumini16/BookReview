@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { deleteReview } from '../api/api';
 import { useNavigate } from 'react-router-dom';
+import { FaStar } from 'react-icons/fa'; // Importing the FaStar icon
 
 const ReviewItem = ({ review, onDelete }) => {
     const navigate = useNavigate();
@@ -15,40 +16,59 @@ const ReviewItem = ({ review, onDelete }) => {
             setMessage('Something went wrong. Please try again later.');  // Error message
         }
     };
-   
-
 
     return (
-        <div className="card shadow-sm h-100">
-            <div className="card-body">
-                <h5 className="card-title">{review.bookTitle}</h5>
-                <h6 className="card-subtitle mb-2 text-muted">{review.author}</h6>
-                <p className="card-text">{review.reviewText}</p>
-                <div className="mb-2">
-                    <span className="badge bg-primary">
-                        {review.rating} Star{review.rating > 1 && 's'}
+        <div className="bg-white shadow-lg rounded-lg overflow-hidden mb-6 transition-all hover:shadow-2xl">
+            <div className="p-6">
+                <h5 className="text-2xl font-semibold text-gray-800 mb-2">{review.bookTitle}</h5>
+                <h6 className="text-sm text-gray-600 mb-4">{review.author}</h6>
+
+                {/* Review Text */}
+                <p className="text-gray-800 mb-4">{review.reviewText}</p>
+
+                {/* Star Rating */}
+                <div className="mb-4 flex">
+                    {[...Array(5)].map((_, index) => (
+                        <FaStar
+                            key={index}
+                            className={`text-xl ${review.rating > index ? 'text-yellow-500' : 'text-gray-300'}`}
+                        />
+                    ))}
+                </div>
+
+                {/* Rating Badge */}
+                <div className="mb-4">
+                    <span className="inline-block py-1 px-3 text-white bg-blue-500 rounded-full">
+                        {review.rating} Star{review.rating > 1 ? 's' : ''}
                     </span>
                 </div>
 
                 {/* Display success or error message */}
                 {message && (
-                    <div className={`alert ${message.includes('successfully') ? 'alert-success' : 'alert-danger'}`}>
+                    <div
+                        className={`p-3 rounded-lg text-white ${message.includes('successfully') ? 'bg-green-500' : 'bg-red-500'}`}
+                    >
                         {message}
                     </div>
                 )}
 
-                <button
-                    className="btn btn-sm btn-warning me-2"
-                    onClick={() => navigate(`/edit/${review._id}`, { state: { review } })}
-
-                >
-                    Edit
-                </button>
-                <button className="btn btn-sm btn-danger" onClick={handleDelete}>
-                    Delete
-                </button>
+                {/* Buttons */}
+                <div className="mt-6 flex justify-between">
+                    <button
+                        className="bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition-all duration-200"
+                        onClick={() => navigate(`/edit/${review._id}`, { state: { review } })}
+                    >
+                        Edit
+                    </button>
+                    <button
+                        className="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-all duration-200"
+                        onClick={handleDelete}
+                    >
+                        Delete
+                    </button>
+                </div>
             </div>
-            <div className="card-footer text-muted">
+            <div className="bg-gray-100 text-gray-600 p-4 text-sm text-center">
                 Added on {new Date(review.dateAdded).toLocaleDateString()}
             </div>
         </div>

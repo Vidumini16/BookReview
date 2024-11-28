@@ -11,7 +11,7 @@ const App = () => {
                 <Route path="/home" element={<ReviewList />} />
                 <Route path="/add" element={<ReviewForm />} />
                 <Route path="/edit/:id" element={<ReviewForm editMode />} /> {/* Dynamic Route */}
-                <Route path="/item" element={<ReviewItem />} />
+                
             </Routes>
         </Router>
     );
