@@ -69,6 +69,8 @@ const deleteReview = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: 'Error deleting review', error: err.message });
   }
+  res.status(500).json({ message: 'Error updating review', error: err.message || 'Unknown error' });
+
 };
 
 module.exports = {
