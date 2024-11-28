@@ -6,34 +6,36 @@ MERN stack project
 
 A full-stack web application that allows users to add, edit, delete, and view book reviews. The application has features like adding ratings, submitting reviews, and responding to reviews. Built using React for the frontend, Node.js with Express for the backend, and MongoDB for storing data.
 
+---
 ##Features Implemented
 
-*User Authentication*: (if applicable)
-*CRUD Operations*: Add, Edit, Delete, and View Book Reviews.
-*Star Rating*: Rate books on a scale of 1 to 5 stars.
-*Search and Filter Reviews*: Filter reviews based on search terms, rating, and response status.
-*Responsive Design*: The application is fully responsive and works on both desktop and mobile devices.
-*Review Editing*: Edit existing reviews and update information like book title, author, and review text.
-*Star Rating UI*: Interactive star rating system using react-icons (FaStar) for visual appeal.
-*Validation*: Input fields are validated to ensure that only valid strings are entered for book title, author, and review text.
+-*User Authentication*: (if applicable)
+-*CRUD Operations*: Add, Edit, Delete, and View Book Reviews.
+-*Star Rating*: Rate books on a scale of 1 to 5 stars.
+-*Search and Filter Reviews*: Filter reviews based on search terms, rating, and response status.
+-*Responsive Design*: The application is fully responsive and works on both desktop and mobile devices.
+-*Review Editing*: Edit existing reviews and update information like book title, author, and review text.
+-*Star Rating UI*: Interactive star rating system using react-icons (FaStar) for visual appeal.
+-*Validation*: Input fields are validated to ensure that only valid strings are entered for book title, author, and review text.
 
+---
 ##Technologies Used
 
-*Frontend*
+-*Frontend*
 -React.js
 -Tailwind CSS
-*Backend*
+-*Backend*
 -Node.js
 -Express.js
-*Database*
+-*Database*
 -MongoDB
-*Authentication*
+-*Authentication*
 -(Optional, specify if implemented)
-*Icons*
+-*Icons*
 -React Icons (FaStar for star ratings)
-*Routing*
+-*Routing*
 -React Router for navigation
-*State Management*
+-*State Management*
 -React Hooks (useState, useEffect)
 
 ##Installation
