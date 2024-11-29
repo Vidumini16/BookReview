@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { getReviews } from '../api/api';
 import ReviewItem from './ReviewItem';
-import { FaStar } from 'react-icons/fa';  // Correctly importing FaStar
+import { FaStar } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';  // Importing useNavigate for navigation
 
 const ReviewList = () => {
     const [reviews, setReviews] = useState([]);
+    const navigate = useNavigate(); // Hook for navigation
 
     useEffect(() => {
         const fetchReviews = async () => {
-            const { data } = await getReviews();  // Fetch reviews from API
+            const { data } = await getReviews();
             setReviews(data);
         };
         fetchReviews();
     }, []);
 
     const handleDelete = (id) => {
-        setReviews(reviews.filter((review) => review._id !== id));  // Remove deleted review from the list
+        setReviews(reviews.filter((review) => review._id !== id));
     };
 
     return (
@@ -54,7 +56,15 @@ const ReviewList = () => {
 
             {/* Review List Section */}
             <div className="w-3/4 p-6">
-                <h1 className="text-2xl font-bold mb-4">Book Reviews</h1>
+                <div className="flex justify-between items-center mb-4">
+                    <h1 className="text-2xl font-bold">Book Reviews</h1>
+                    <button
+                        className="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600"
+                        onClick={() => navigate('/add')}
+                    >
+                        Add Review
+                    </button>
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {reviews.map((review) => (
                         <ReviewItem key={review._id} review={review} onDelete={handleDelete} />
